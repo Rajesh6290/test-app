@@ -112,7 +112,7 @@ const CreateProject = ({
                         formik={formik}
                         error={Boolean(
                           formik?.touched[inputItem?.name] &&
-                            formik?.errors[inputItem?.name]
+                          formik?.errors[inputItem?.name]
                         )}
                         placeholder="Enter Project Name"
                         helperText={
