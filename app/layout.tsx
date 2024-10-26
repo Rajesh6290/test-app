@@ -7,6 +7,7 @@ import NextTopLoader from "nextjs-toploader";
 import "./globals.css";
 import { Navbar } from "@/components/custom/navbar";
 import { MyContextProvider } from "./context/MyContext";
+import Layout from "@/components/core/Layout";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://chat.vercel.ai"),
@@ -37,10 +38,7 @@ export default async function RootLayout({
             }}
           >
             <MyContextProvider>
-              <div className="flex flex-col h-full">
-                <Navbar />
-                <div className=" grow overflow-y-auto">{children}</div>
-              </div>
+              <Layout>{children}</Layout>
             </MyContextProvider>
           </ClerkProvider>
         </ThemeProvider>

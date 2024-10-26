@@ -5,6 +5,7 @@ import { useUser } from "@clerk/nextjs";
 import { useTheme } from "next-themes";
 import { usePathname } from "next/navigation";
 import { useRouter } from "nextjs-toploader/app";
+import { UserOrLogin } from "./UserOrLogin";
 
 const SideBar = () => {
   const router = useRouter();
@@ -25,14 +26,13 @@ const SideBar = () => {
         }}
         key={subItem.name}
         className={`flex items-center gap-2 p-2.5 rounded-[0.6rem] cursor-pointer duration-300 font-medium text-lg text-gray-700 dark:text-gray-400
-        ${
-          isActive
+        ${isActive
             ? getThemeClasses("bg-gray-200", "bg-darkHoverBackground")
             : getThemeClasses(
-                "hover:bg-gray-200",
-                "hover:bg-darkHoverBackground"
-              )
-        }
+              "hover:bg-gray-200",
+              "hover:bg-darkHoverBackground"
+            )
+          }
       }
         `}
       >
@@ -69,14 +69,13 @@ const SideBar = () => {
         key={item.name}
         className={`flex items-center  bg-background gap-2 p-3  cursor-pointer rounded-[0.6rem] duration-300 font-medium 
          text-gray-700 dark:text-white
-         ${
-           isActive
-             ? getThemeClasses("bg-gray-200", "bg-darkHoverBackground")
-             : getThemeClasses(
-                 "hover:bg-gray-200",
-                 "hover:bg-darkHoverBackground"
-               )
-         }
+         ${isActive
+            ? getThemeClasses("bg-gray-200", "bg-darkHoverBackground")
+            : getThemeClasses(
+              "hover:bg-gray-200",
+              "hover:bg-darkHoverBackground"
+            )
+          }
         `}
       >
         {item.icon}
@@ -90,7 +89,14 @@ const SideBar = () => {
       className={` relative overflow-y-auto border-r z-20 border-[#ebe8e8] dark:border-[#272727]  justify-start flex flex-col bg-background w-full h-full`}
     >
       {/* Menu Items */}
-      <div className="m-3 flex flex-col gap-2">
+      <div className="flex flex-col gap-2">
+        {asPath === "/workflow" && <div className="flex pt-2  px-3 items-center gap-1">
+          <UserOrLogin />
+        </div>}
+        <p className="w-full border-b border-[#ebe8e8] dark:border-[#272727]"></p>
+      </div>
+      <div className="m-3 flex flex-col gap-2 ">
+
         {isLoaded &&
           user?.id &&
           UseMenuItems().map((item: MENUARRPROPS) => renderMenuItem(item))}

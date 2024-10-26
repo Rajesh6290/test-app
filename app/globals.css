@@ -82,6 +82,16 @@
 ::-webkit-scrollbar-thumb:hover {
   background: #555; /* Color of the thumb on hover */
 }
+/* page.module.css */
+.hideScrollbar {
+  overflow-y: scroll; /* Allows scrolling */
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+.hideScrollbar::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
 #nprogress {
   z-index: 9999 !important;
 }
