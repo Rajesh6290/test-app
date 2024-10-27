@@ -26,7 +26,7 @@ export function UserOrLogin() {
           <TbSlash className="text-2xl  -rotate-12  text-gray-500 dark:text-gray-400" />
           <div className="flex items-center gap-2">
             <UserButton />
-            <span>Hi, {user.firstName}</span>
+            <span className="text-gray-700 dark:text-gray-300">Hi, {user.firstName}</span>
           </div>
         </>
       ) : (

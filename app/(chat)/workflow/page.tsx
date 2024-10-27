@@ -20,13 +20,12 @@ const tabs = [
 
 const Skelton = () => {
   return (
-    <div className="w-full flex flex-col gap-4 dark:bg-[#333333] bg-[#F4F4F4] rounded-[10px] p-4">
-      <p className="w-full p-2.5 rounded-[4px] dark:bg-[#1f1f1f] bg-[#D7D7D7] animate-pulse"></p>
-      <p className="w-full p-2.5 rounded-[4px] dark:bg-[#1f1f1f] bg-[#D7D7D7] animate-pulse"></p>
-      <p className="w-full p-2.5 rounded-[4px] dark:bg-[#1f1f1f] bg-[#D7D7D7] animate-pulse"></p>
+    <div className="w-full flex flex-col gap-4 dark:bg-[#1f1f1f] bg-[#F4F4F4] rounded-[10px] p-4">
+      <p className="w-full p-2.5 rounded-[4px] dark:bg-[#333333] bg-[#D7D7D7] animate-pulse"></p>
+      <p className="w-full p-2.5 rounded-[4px] dark:bg-[#333333] bg-[#D7D7D7] animate-pulse"></p>
       <div className="flex items-center gap-3">
-        <p className="w-[85%] p-2.5 rounded-[4px] dark:bg-[#1f1f1f] bg-[#D7D7D7] animate-pulse"></p>
-        <p className="w-[15%] p-2.5 rounded-[4px] dark:bg-[#1f1f1f] bg-[#D7D7D7] animate-pulse"></p>
+        <p className="w-[85%] p-2.5 rounded-[4px] dark:bg-[#333333] bg-[#D7D7D7] animate-pulse"></p>
+        <p className="w-[15%] p-2.5 rounded-[4px] dark:bg-[#333333] bg-[#D7D7D7] animate-pulse"></p>
       </div>
     </div>
   )
@@ -61,7 +60,7 @@ const SearchInput = ({ searchText, setSearchText }: { searchText: string; setSea
   </div>
 );
 
-const WorkflowList = ({ workflows }: any) => (
+const WorkflowList = ({ workflows, router }: any) => (
   <div className="w-full grid 2xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 grid-cols-1 items-center gap-6">
     {workflows.map((item: any, index: number) => (
       <div key={index} className="w-full h-full border rounded-xl border-[#D7D7D7] dark:border-[#464545] flex flex-col justify-between gap-3 p-3">
@@ -79,7 +78,7 @@ const WorkflowList = ({ workflows }: any) => (
         <p className="text-lg font-semibold text-gray-600 dark:text-gray-200">{item?.workflowName}</p>
         <p className="text-xs font-medium text-gray-500 dark:text-gray-300 line-clamp-4">{item?.workflowDescription}</p>
         <div className="w-full flex items-center justify-end">
-          <p className="text-sm cursor-pointer font-medium text-white rounded-[8px] bg-[#693EE0] px-2.5 py-0.5">Try this</p>
+          <p onClick={() => router?.push(`/workflow/${item?.workflowId}`)} className="text-sm cursor-pointer font-medium text-white rounded-[8px] bg-[#693EE0] px-2.5 py-0.5">Try this</p>
         </div>
       </div>
     ))}
@@ -149,7 +148,7 @@ const Page = () => {
               ))}
             </div>
           ) : data?.length > 0 ? (
-            <WorkflowList workflows={data} />
+            <WorkflowList workflows={data} router={router} />
           ) : (
             <div className="w-full h-[20rem] flex items-center justify-center">
               <Empty

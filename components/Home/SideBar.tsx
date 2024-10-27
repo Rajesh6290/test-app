@@ -3,7 +3,7 @@ import { UseMenuItems } from "@/hooks";
 import { MENUARRPROPS, SUBMENU } from "@/utils";
 import { useUser } from "@clerk/nextjs";
 import { useTheme } from "next-themes";
-import { usePathname } from "next/navigation";
+import { useParams, usePathname } from "next/navigation";
 import { useRouter } from "nextjs-toploader/app";
 import { UserOrLogin } from "./UserOrLogin";
 
@@ -11,6 +11,7 @@ const SideBar = () => {
   const router = useRouter();
   const { setSliderOpen } = useMyContext();
   const { isLoaded, user } = useUser();
+  const params = useParams()
   const asPath = usePathname();
   const { theme } = useTheme();
   const getThemeClasses = (lightClass: string, darkClass: string) => {
@@ -90,7 +91,7 @@ const SideBar = () => {
     >
       {/* Menu Items */}
       <div className="flex flex-col gap-2">
-        {asPath === "/workflow" && <div className="flex pt-2  px-3 items-center gap-1">
+        {["/workflow", `/workflow/${params?.id}`]?.includes(asPath) && <div className="flex pt-2  px-3 items-center gap-1">
           <UserOrLogin />
         </div>}
         <p className="w-full border-b border-[#ebe8e8] dark:border-[#272727]"></p>

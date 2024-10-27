@@ -1,13 +1,12 @@
-import { Metadata } from "next";
-import { Toaster } from "sonner";
+import Layout from "@/components/core/Layout";
+import { ThemeProvider } from "@/components/custom/theme-provider";
 import { ClerkProvider } from "@clerk/nextjs";
 import { dark } from "@clerk/themes";
-import { ThemeProvider } from "@/components/custom/theme-provider";
+import { Metadata } from "next";
 import NextTopLoader from "nextjs-toploader";
-import "./globals.css";
-import { Navbar } from "@/components/custom/navbar";
+import { Toaster } from "sonner";
 import { MyContextProvider } from "./context/MyContext";
-import Layout from "@/components/core/Layout";
+import "./globals.css";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://chat.vercel.ai"),
